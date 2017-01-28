@@ -11,8 +11,8 @@ use Symfony\Component\Console\Input\InputArgument;
 $application = new Application('fileencrypt', '0.1');
 
 $encryptCommand = new \App\EncryptCommand();
-$encryptCommand->addArgument('input file', InputArgument::REQUIRED, 'Input file to be encrypted')
-	->addArgument('output file', InputArgument::REQUIRED, 'Output file');
+$encryptCommand->addArgument('input', InputArgument::REQUIRED, 'Input file to be encrypted')
+	->addArgument('output', InputArgument::REQUIRED, 'Output file');
 
 
 $application->add($encryptCommand);

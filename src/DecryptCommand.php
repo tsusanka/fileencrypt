@@ -2,10 +2,7 @@
 
 namespace App;
 
-use Defuse\Crypto\Exception\IOException;
 use Defuse\Crypto\File;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
 
 
 class DecryptCommand extends CryptCommand
@@ -17,24 +14,9 @@ class DecryptCommand extends CryptCommand
 			->setDescription('Decrypts a file');
 	}
 
-	protected function execute(InputInterface $input, OutputInterface $output)
+	protected function runAction($password)
 	{
-		$inputFile = $input->getArgument('input');
-		$outputFile = $input->getArgument('output');
-
-		if (!$this->checkPaths($inputFile, $outputFile)) {
-			$output->writeln('Error: No such files exist');
-			return 1;
-		}
-
-		$password = $this->askForPassword($input, $output);
-
-		try {
-			File::decryptFileWithPassword($inputFile, $outputFile, $password);
-		} catch (IOException $e) {
-			$output->writeln('Unexpected error occurred: ' . $e->getMessage());
-			return 2;
-		}
+		File::decryptFileWithPassword($this->inputFile, $this->outputFile, $password);
 	}
 
 }

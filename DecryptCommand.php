@@ -8,13 +8,13 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 
-class EncryptCommand extends CryptCommand
+class DecryptCommand extends CryptCommand
 {
 
 	protected function configure()
 	{
-		$this->setName('encrypt')
-			->setDescription('Encrypts a file');
+		$this->setName('decrypt')
+			->setDescription('Decrypts a file');
 	}
 
 	protected function execute(InputInterface $input, OutputInterface $output)
@@ -30,7 +30,7 @@ class EncryptCommand extends CryptCommand
 		$password = $this->askForPassword($input, $output);
 
 		try {
-			File::encryptFileWithPassword($inputFile, $outputFile, $password);
+			File::decryptFileWithPassword($inputFile, $outputFile, $password);
 		} catch (IOException $e) {
 			$output->writeln('Unexpected error occurred: ' . $e->getMessage());
 			return 2;

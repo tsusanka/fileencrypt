@@ -2,9 +2,9 @@
 <?php
 
 require __DIR__ . '/vendor/autoload.php';
-require __DIR__ . '/CryptCommand.php';
-require __DIR__ . '/EncryptCommand.php';
-require __DIR__ . '/DecryptCommand.php';
+require __DIR__ . '/src/CryptCommand.php';
+require __DIR__ . '/src/EncryptCommand.php';
+require __DIR__ . '/src/DecryptCommand.php';
 
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Input\InputArgument;

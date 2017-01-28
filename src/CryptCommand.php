@@ -36,6 +36,8 @@ abstract class CryptCommand extends Command
 			$output->writeln('Unexpected error occurred: ' . $e->getMessage());
 			return 2;
 		}
+
+		return 0;
 	}
 
 	abstract protected function runAction($password);
